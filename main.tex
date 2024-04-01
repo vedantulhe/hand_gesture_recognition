@@ -1,0 +1,146 @@
+
+
+\documentclass[biblatex]{lni}
+\addbibresource{lni-paper-example-en.bib}
+
+
+\usepackage{booktabs}
+\usepackage[]{blindtext}
+
+\begin{document}
+
+\title[A Short Title]{Human Activity Recognition}
+
+\author[1]{Firstname1 Lastname1}{firstname1.lastname1@affiliation1.de}{0000-0000-0000-0000}
+\author[2]{Firstname2 Lastname2}{firstname2.lastname2@affiliation2.de}{0000-0000-0000-0000}
+\author[1]{Firstname3 Lastname3}{firstname3.lastname3@affiliation1.de}{0000-0000-0000-0000}
+\author[1]{Firstname4 Lastname4}{firstname4.lastname4@affiliation1.de}{0000-0000-0000-0000}%
+\affil[1]{University\\Department\\Street\\Postal Code City\\Country}
+\affil[2]{University\\Department\\Address\\Country}
+\maketitle
+
+\begin{abstract}
+The \LaTeX{} class \texttt{lni} implements the layout guidelines for contributions in LNI conference volumes.
+This document describes its usage and serves as an example for its presentation.
+The abstract is a brief overview of the work, which should be between 70 and 150 words long and should contain the most important information.
+The formatting is done automatically within the abstract environment.
+\end{abstract}
+
+\begin{keywords}
+LNI Guidelines \and \LaTeX\ Template
+\end{keywords}
+
+\section{Usage}
+The GI provides guidelines for formatting documents in the LNI series at \url{http://www.gi-ev.de/LNI}.
+For \LaTeX{} documents, these are realized through the document class \texttt{lni}.
+
+This document is based on the official documentation, simplified, and assumes basic LaTeX knowledge.
+Generic placeholders are inserted at the appropriate locations (such as the author information) and are not further documented elsewhere.
+
+This template is structured as follows:
+\Cref{sec:demos} demonstrates the LNI features.
+\Cref{sec:lniconformance} demonstrates compliance with the guidelines through simple text.
+
+\section{Demonstrations}
+\label{sec:demos}
+The power set symbol ($\powerset$) is displayed correctly.
+There is no more Weierstrass-p ($\wp$).
+
+Angle brackets can be entered directly: <test />
+
+Anonymizations can be made automatically using the anonymous option in the document class. For this purpose, there is the \texttt{anon} macro, e.g., \anon{Secret for Review} and \anon[for Review Only]{for the final version only}.
+
+Here's a small demonstration of \href{https://www.ctan.org/pkg/microtype}{microtype}:
+\blindtext
+
+\section{Demonstration of Compliance with the Guidelines}
+\label{sec:lniconformance}
+
+\subsection{Bibliography}
+The last section shows an exemplary bibliography for books with one author \cite{Ez10} and two authors \cite{AB00}, a contribution in proceedings with three authors \cite{ABC01}, a contribution in an LNI volume with more than three authors \cite{Az09}, two books with the same four authors in the same year \cite{Wa14} and \cite{Wa14b}, a journal \cite{Gl06}, a website \cite{GI19}, and other literature without specific authorship \cite{XX14}.
+Biblatex is used because it supports UTF8 cleanly and does not produce errors when bibtexing, \href{https://github.com/gi-ev/LNI/issues/5}{unlike lni.bst}.
+
+References should not be directly embedded as subjects, but only through author references:
+Example: \Citet{AB00} provide an example, but also \citet{Az09}.
+Note: Capital C with \texttt{Citet} when it begins a sentence. This is analogous to \texttt{Cref}.
+
+Formatting and abbreviations are automatically applied for the reference types \texttt{book}, \texttt{inbook}, \texttt{proceedings}, \texttt{inproceedings}, \texttt{article}, \texttt{online}, and \texttt{misc}.
+Possible fields for references can be found in the sample file \texttt{lni-paper-example-en.bib}.
+Other references and fields may need to be adjusted afterwards.
+
+\subsection{Figures}
+\Cref{fig:demo} shows a figure.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=.8\textwidth]{example-image}
+  \caption{Demographics}
+  \label{fig:demo}
+\end{figure}
+
+\subsection{Tables}
+\Cref{tab:demo} shows a table.
+
+\begin{table}
+\centering
+\begin{tabular}{lll}
+\toprule
+Heading Levels & Example & Font Size and Style \\
+\midrule
+Title (left-aligned) & The Title \ldots & 14 pt, Bold\\
+Heading 1 & 1 Introduction & 12 pt, Bold\\
+Heading 2 & 2.1 Title & 10 pt, Bold\\
+\bottomrule
+\end{tabular}
+\caption{The Heading Styles}
+\label{tab:demo}
+\end{table}
+
+\subsection{Program Code}
+The LNI style requires listings to be indented from the left margin.
+In the \texttt{lni} document class, this is implemented for the \texttt{verbatim} environment.
+
+\begin{verbatim}
+public class Hello {
+    public static void main (String[] args) {
+        System.out.println("Hello World!");
+    }
+}
+\end{verbatim}
+
+Alternatively, the \texttt{lstlisting} environment can be used.
+
+\Cref{java-hello-world} shows an example using the \texttt{lstlisting} environment. Another example is \cref{python-hello-world}.
+
+\begin{lstlisting}[caption={A Java Program}, label=java-hello-world, language=Java]
+public class Hello {
+  public static void main (String[] args) {
+    System.out.println("Hello World!");
+  }
+}
+\end{lstlisting}
+
+\begin{lstlisting}[caption={A Python Program}, label=python-hello-world, language=Python]
+# This program prints Hello, world!
+
+print('Hello, world!')
+\end{lstlisting}
+
+\subsection{Formulas and Equations}
+
+Correct indentation and numbering for formulas are ensured with the \texttt{equation} and \texttt{align} environments.
+
+\begin{equation}
+  1=4-3
+\end{equation}
+and
+\begin{align}
+  2&=7-5\\
+  3&=2-1
+\end{align}
+
+%% \bibliography{lni-paper-example-en.tex} is not allowed here: biblatex expects this in the preamble
+%% Run "biber paper" to generate a bibliography.
+\printbibliography
+
+\end{document}
